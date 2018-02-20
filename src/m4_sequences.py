@@ -5,8 +5,8 @@ This problem provides practice at:
   ***  SEQUENCES.  ***
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Peter Venema.
+"""  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ########################################################################
 # Students:
@@ -134,13 +134,18 @@ def practice_problem4a(sequence):
       :type sequence: list | tuple | string
     """
     ####################################################################
-    # TODO: 2. Implement and test this function.
+    # TOdDO: 2. Implement and test this function.
     #     The testing code is already written for you (above).
     ####################################################################
     # DIFFICULTY AND TIME RATINGS (see top of this file for explanation)
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:   15 minutes.
     ####################################################################
+    rtrnList = []
+    for k in range(1, len(sequence), 1):
+        if sequence[k] == sequence[k-1]:
+            rtrnList += [k-1]
+    return rtrnList
 
 
 def run_test_practice_problem4b():
@@ -197,13 +202,21 @@ def practice_problem4b(sequence):
       :type sequence: (list | tuple) of (float | int)
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # TODdO: 3. Implement and test this function.
     #     The testing code is already written for you (above).
     ####################################################################
     # DIFFICULTY AND TIME RATINGS (see top of this file for explanation)
     #    DIFFICULTY:      5
     #    TIME ESTIMATE:   10 minutes.
     ####################################################################
+    largest = 0
+    for k in range(0, len(sequence), 2):
+        if k == 0:
+            largest = sequence[k]
+        else:
+            if sequence[k] > largest:
+                largest = sequence[k]
+    return largest
 
 
 def run_test_practice_problem4c():
@@ -295,7 +308,7 @@ def practice_problem4c(points):
       :rtype: rg.Point | string
     """
     ####################################################################
-    # TODO: 4. Implement and test this function.
+    # TODdO: 4. Implement and test this function.
     #     The testing code is already written for you (above).
     #
     # IMPORTANT: This problem is your LOWEST PRIORITY for preparing
@@ -306,6 +319,20 @@ def practice_problem4c(points):
     #    DIFFICULTY:      9
     #    TIME ESTIMATE:   15 minutes.
     ####################################################################
+    rtrnVal = 0
+    temp = 0
+    x=0
+    for k in range(len(points)):
+       if x == 0 & is_prime(points[k].x) == True & is_prime(points[k].y) == True:
+           rtrnVal = points[k]
+           temp = points[k].x
+           points[k].x = points[k].y
+           points[k].y = temp
+           x += 1
+    if rtrnVal == 0:
+        return 'Not found'
+    else:
+        return rtrnVal
 
 
 def run_test_practice_problem4d():
@@ -391,14 +418,19 @@ def practice_problem4d(sequence):
       :rtype: int
     """
     ####################################################################
-    # TODO: 5. Implement and test this function.
+    # TdODO: 5. Implement and test this function.
     #     The testing code is already written for you (above).
     ####################################################################
     # DIFFICULTY AND TIME RATINGS (see top of this file for explanation)
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:   15 minutes.
     ####################################################################
-
+    ttl = 0
+    for k in range(1, len(sequence), 1):
+        if is_prime(sequence[k]) and is_prime(sequence[k-1]):
+            if sequence[k] != sequence[k-1]:
+                ttl += sequence[k-1]
+    return ttl
 
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
